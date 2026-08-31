@@ -1,6 +1,7 @@
 vim.opt.number = true           -- 显示行号
 vim.opt.relativenumber = true   -- 启用相对行号
 
+
 vim.opt.cursorline = true       -- 高亮当前行
 vim.opt.colorcolumn = "120"      -- 高亮80列
 
@@ -20,3 +21,5 @@ vim.opt.splitright = true
 vim.opt.showmode = false
 
 vim.opt.clipboard = "unnamedplus"
+
+vim.cmd('syntax on')
