@@ -3,8 +3,9 @@ local lsp_servers = {
 	"pyright",
 	"typescript-language-server",
 	"gopls",
-    "phpactor",
---    "clangd",
+	"phpactor",
+    "clangd",
+    "kulala_ls",
 }
 
 return {
@@ -51,7 +52,6 @@ return {
 			client.server_capabilities.documentFormattingProvider = false
 			client.server_capabilities.documentRangeFormattingProvider = false
 			-- 可绑定其他快捷键，如：
-			-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
 		end
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()

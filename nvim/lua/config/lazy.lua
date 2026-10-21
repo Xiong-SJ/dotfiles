@@ -1,3 +1,6 @@
+vim.g.mason_proxy = "http://127.0.0.1:7890"
+vim.g.mason_https_proxy = "http://127.0.0.1:7890"
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.uv.fs_stat(lazypath) then

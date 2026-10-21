@@ -4,6 +4,8 @@ local lsp_servers = {
 	"typescript-language-server",
 	"gopls",
 	"phpactor",
+    "clangd",
+    "kulala_ls",
 }
 
 return {

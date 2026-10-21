@@ -1,6 +1,8 @@
 local languages_install = {
     "lua",
-    "python"
+    "python",
+    "asm",
+    "http",
 }
 
 return {

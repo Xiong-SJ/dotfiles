@@ -29,10 +29,49 @@ vim.keymap.set("i", "<C-x>", "<Esc>ddgi") -- Ctrl+x 删除当前行并保持插�
 vim.keymap.set("n", "/", "?", { desc = "向上搜索" })
 vim.keymap.set("n", "?", "/", { desc = "向下搜索" })
 
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = '跳转到定义' })
-vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = '跳转到声明' })
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "跳转到定义" })
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "跳转到声明" })
 
 -- 项目内搜索
-vim.keymap.set({ "n", "i", "v" }, '<C-S-f>', "<Cmd>Telescope live_grep<CR>", { silent= true })
+vim.keymap.set({ "n", "i", "v" }, "<C-S-f>", "<Cmd>Telescope live_grep<CR>", { silent = true })
 -- 当前文件搜索
-vim.keymap.set({ "n", "i", "v" }, '<C-/>', "<Cmd>Telescope current_buffer_fuzzy_find<CR>", { silent= true })
+vim.keymap.set({ "n", "i", "v" }, "<C-/>", "<Cmd>Telescope current_buffer_fuzzy_find<CR>", { silent = true })
+
+
+-- -- 关键：设置虚拟行的溢出行为为 "wrap"，开启自动换行
+-- vim.opt.virt_lines_overflow = "wrap"
+--
+-- -- 用 <leader>le 来切换虚拟行显示
+-- vim.keymap.set({"n","i","x"}, "<F3>", function()
+-- 	local current = vim.diagnostic.config().virtual_lines
+-- 	vim.diagnostic.config({ virtual_lines = not current })
+-- end, { desc = "Toggle diagnostic virtual lines" })
+
+
+-- 空格 + l 向右跳转（回到右侧代码区）
+vim.keymap.set("n", " l", "<C-w>l", { noremap = true, silent = true })
+-- 空格 + h 向左跳转（去左侧的 Neo-tree，替换掉你之前写的 <leader>h）
+vim.keymap.set("n", " h", "<C-w>h", { noremap = true, silent = true })
+
+vim.keymap.set("n", " j", "<C-w>j", { noremap = true, silent = true })
+
+vim.keymap.set("n", " k", "<C-w>k", { noremap = true, silent = true })
+vim.keymap.set("n", " h", "<C-w>h", { noremap = true, silent = true })
+
+-- 跳转到所有级别的诊断（默认行为）
+vim.keymap.set('n', ']d', function()
+  vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = '下一个诊断（所有级别）' })
+
+vim.keymap.set('n', '[d', function()
+  vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = '上一个诊断（所有级别）' })
+
+-- 仅跳转到 Error 级别的诊断
+vim.keymap.set('n', ']e', function()
+  vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR, float = true })
+end, { desc = '下一个错误' })
+
+vim.keymap.set('n', '[e', function()
+  vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR, float = true })
+end, { desc = '上一个错误' })

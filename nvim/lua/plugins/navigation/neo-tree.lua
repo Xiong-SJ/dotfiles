@@ -23,8 +23,16 @@ return {
 					hide_dotfiles = false,
 				},
 			},
+			window = {
+				mappings = {
+					-- 让空格键负责“打开文件/文件夹”
+					["<space>"] = "open",
+					-- 让回车键负责“展开/折叠节点”
+					["<cr>"] = "toggle_node",
+				},
+			},
 		})
 		-- 在 config 中设置快捷键，保证插件加载完成后才生效
-		vim.keymap.set({"n","i" ,"x" }, "<F2>", ":Neotree toggle<CR>", { noremap = true, silent = true })
+		vim.keymap.set({ "n", "i", "x" }, "<F2>", ":Neotree toggle<CR>", { noremap = true, silent = true })
 	end,
 }
