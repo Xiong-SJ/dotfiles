@@ -1,3 +1,12 @@
+-- 普通模式：进入字符可视模式并全选
+vim.keymap.set('n', '<C-a>', 'ggVG', { desc = '全选' })
+
+-- 插入模式：先退出到普通模式，再全选
+vim.keymap.set('i', '<C-a>', '<Esc>ggVG', { desc = '全选' })
+
+-- 可视模式：保持全选（如果已经选中部分内容，再次按下扩展到全文）
+vim.keymap.set('v', '<C-a>', '<Esc>ggVG', { desc = '全选' })
+
 -- 撤销
 vim.keymap.set({ "n", "i", "x" }, "<C-z>", "<Cmd>undo<CR>", { silent = true })
 
